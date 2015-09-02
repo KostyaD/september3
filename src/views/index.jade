@@ -1,0 +1,14 @@
+extends templates/layout
+
+block content
+  .preloader.js-preloader
+    .center-wrap
+      .preloader__img
+        img(src="images/preloader.png")
+      .preloader__text Загрузка
+  .calendar.js-calendar
+    .calendar__list.js-list
+      .list__number 3
+      .list__month Сентября
+  .video-bg-holder.js-video
+    video.video-bg(autoplay loop src="images/video.mp4")
