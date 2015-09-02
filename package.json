@@ -1,5 +1,5 @@
 {
-  "name": "Dada",
+  "name": "3september",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Grapheme"
+    "url": "https://github.com/KostyaD"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Grapheme"
+    "url": "https://github.com/KostyaD"
   },
-  "homepage": "https://github.com/Grapheme",
+  "homepage": "https://github.com/KostyaD",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
