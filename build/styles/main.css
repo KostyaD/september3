@@ -453,7 +453,12 @@ body {
   -webkit-perspective: 1000;
           perspective: 1000;
   -webkit-transition: all 0.5s ease;
-          transition: all 0.5s ease; }
+          transition: all 0.5s ease;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer; }
   .calendar .calendar__list {
     position: absolute;
     left: 0;
@@ -504,10 +509,23 @@ body {
   font-weight: 300;
   color: #fff;
   text-align: center;
-  margin-top: 5vh; }
+  margin-top: 5vh;
+  opacity: 0;
+  -webkit-transform: translateY(-30px);
+      -ms-transform: translateY(-30px);
+          transform: translateY(-30px);
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease; }
   .title-text span {
     font-size: 1.5em;
     margin: 0 0.25em; }
+  .title-text.small {
+    font-size: 10px; }
+  .title-text.turned {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+            transform: translateY(0); }
 
 .video-bg-holder {
   width: 100%;
