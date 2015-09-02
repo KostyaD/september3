@@ -6,9 +6,16 @@ block content
       .preloader__img
         img(src="images/preloader.png")
       .preloader__text Загрузка
-  .calendar.js-calendar
-    .calendar__list.js-list
-      .list__number 3
-      .list__month Сентября
-  .video-bg-holder.js-video
+  .screen
+    .calendar.js-calendar
+      .calendar__list.js-list
+        .flip-back
+        .flip-front
+          .list__number.js-n 2
+          .list__month Сентября
+    .title-text Календарь перевернули <span class="js-count"></span> раза
+    .video-bg-holder.js-video
     video.video-bg(autoplay loop src="images/video.mp4")
+    footer.footer
+      a(href="https://itun.es/ru/sXfIq?i=277372354" target="_blank") Послушать 3-е сентября в iTunes
+      a(href="http://vk.com/rovpeople" target="_blank") Послушать других ребят

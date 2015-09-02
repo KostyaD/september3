@@ -371,18 +371,18 @@ th {
 @-webkit-keyframes rotation {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
+            transform: rotate(0deg); }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+            transform: rotate(360deg); } }
 
 @keyframes rotation {
   0% {
     -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
+            transform: rotate(0deg); }
   100% {
     -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
+            transform: rotate(360deg); } }
 
 html {
   font-family: 'Ubuntu', sans-serif;
@@ -432,44 +432,61 @@ body {
     font-size: 20px;
     font-weight: 300; }
 
+.screen {
+  opacity: 0;
+  -webkit-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+  text-align: center; }
+  .screen.active {
+    opacity: 1; }
+
 .calendar {
-  position: absolute;
+  position: relative;
+  display: inline-block;
+  margin-top: 20vh;
   z-index: 2;
-  top: 50%;
-  left: 50%;
   width: 250px;
-  margin-left: -125px;
-  margin-top: -150px;
+  height: 275px;
   text-align: center;
   border-top: 5px dashed #fff;
   box-sizing: border-box;
   -webkit-perspective: 1000;
           perspective: 1000;
-  opacity: 0;
   -webkit-transition: all 0.5s ease;
           transition: all 0.5s ease; }
-  .calendar.active {
-    opacity: 1; }
   .calendar .calendar__list {
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    background: #fff;
-    padding-top: 40px;
-    height: 230px;
-    border: 1px solid #222;
-    border-top: none;
-    -webkit-transform-origin: 0 0;
-        -ms-transform-origin: 0 0;
-            transform-origin: 0 0;
-    -webkit-transition: all 0.3s ease;
-            transition: all 0.3s ease;
-    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75); }
-    .calendar .calendar__list:hover {
+    right: 0; }
+    .calendar .calendar__list .flip-front {
+      position: relative;
+      top: 0;
+      background: #fff;
+      padding-top: 40px;
+      height: 230px;
+      border: 1px solid #222;
+      border-top: none;
+      box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden; }
+    .calendar .calendar__list .flip-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff; }
+    .calendar .calendar__list .flip-front, .calendar .calendar__list .flip-back {
+      -webkit-transform-origin: 0 0;
+          -ms-transform-origin: 0 0;
+              transform-origin: 0 0;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
+    .calendar .calendar__list:hover .flip-front, .calendar .calendar__list:hover .flip-back {
       -webkit-transform: rotateX(20deg);
               transform: rotateX(20deg); }
-    .calendar .calendar__list.turn {
+    .calendar .calendar__list.turn .flip-front, .calendar .calendar__list.turn .flip-back {
       -webkit-transition: all 2s ease;
               transition: all 2s ease;
       -webkit-transform: rotateX(270deg);
@@ -479,6 +496,18 @@ body {
       font-size: 90px; }
     .calendar .calendar__list .list__month {
       font-size: 35px; }
+
+.title-text {
+  position: relative;
+  z-index: 2;
+  font-size: 25px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  margin-top: 5vh; }
+  .title-text span {
+    font-size: 1.5em;
+    margin: 0 0.25em; }
 
 .video-bg-holder {
   width: 100%;
@@ -490,10 +519,7 @@ body {
   right: 0px;
   top: 0px;
   bottom: 0px;
-  z-index: 0;
-  opacity: 0; }
-  .video-bg-holder.active {
-    opacity: 1; }
+  z-index: 0; }
 
 .video-bg {
   position: absolute;
@@ -504,3 +530,31 @@ body {
   min-height: 100%;
   width: auto;
   height: auto; }
+
+.footer {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  heigth: 10vh;
+  line-height: 10vh;
+  text-align: center; }
+  .footer a {
+    color: #fff;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 15px;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    -webkit-transition: all 0.2s ease;
+            transition: all 0.2s ease;
+    opacity: .6; }
+    .footer a:hover {
+      border-color: transparent;
+      opacity: 1; }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both; }

@@ -4,45 +4,13 @@
 
 @import "fonts";
 
-@-webkit-keyframes rotation {
-0% {-webkit-transform:rotate(0deg);
--moz-transform:rotate(0deg);
--o-transform:rotate(0deg);
-transform:rotate(0deg);}
-100% {-webkit-transform:rotate(360deg);
--moz-transform:rotate(360deg);
--o-transform:rotate(360deg);
-transform:rotate(360deg);}
-}
-@-moz-keyframes rotation {
-0% {-webkit-transform:rotate(0deg);
--moz-transform:rotate(0deg);
--o-transform:rotate(0deg);
-transform:rotate(0deg);}
-100% {-webkit-transform:rotate(360deg);
--moz-transform:rotate(360deg);
--o-transform:rotate(360deg);
-transform:rotate(360deg);}
-}
-@-o-keyframes rotation {
-0% {-webkit-transform:rotate(0deg);
--moz-transform:rotate(0deg);
--o-transform:rotate(0deg);
-transform:rotate(0deg);}
-100% {-webkit-transform:rotate(360deg);
--moz-transform:rotate(360deg);
--o-transform:rotate(360deg);
-transform:rotate(360deg);}
-}
 @keyframes rotation {
-0% {-webkit-transform:rotate(0deg);
--moz-transform:rotate(0deg);
--o-transform:rotate(0deg);
-transform:rotate(0deg);}
-100% {-webkit-transform:rotate(360deg);
--moz-transform:rotate(720deg);
--o-transform:rotate(360deg);
-transform:rotate(360deg);}
+  0% {
+    transform:rotate(0deg);
+  }
+  100% {
+    transform:rotate(360deg);
+  }
 }
 
 html {
@@ -99,47 +67,73 @@ body {
   }
 }
 
-.calendar {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: 50%;
-  width: 250px;
-  margin-left: -(250/2)+px;
-  margin-top: -(300/2)+px;
-  text-align: center;
-  border-top: 5px dashed #fff;
-  box-sizing: border-box;
-  perspective: 1000;
+.screen {
   opacity: 0;
   transition: all .5s ease;
+  text-align: center;
 
   &.active {
     opacity: 1;
   }
+}
+
+.calendar {
+  position: relative;
+  display: inline-block;
+  margin-top: 20vh;
+  z-index: 2;
+  width: 250px;
+  height: 275px;
+  text-align: center;
+  border-top: 5px dashed #fff;
+  box-sizing: border-box;
+  perspective: 1000;
+  transition: all .5s ease;
 
   .calendar__list {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
-    background: #fff;
-    padding-top: 40px;
-    height: 230px;
-    border: 1px solid #222;
-    border-top: none;
-    transform-origin: 0 0;
-    transition: all .3s ease;
-    box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+
+    .flip-front {
+      position: relative;
+      top: 0;
+      background: #fff;
+      padding-top: 40px;
+      height: 230px;
+      border: 1px solid #222;
+      border-top: none;
+      box-shadow: 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+      backface-visibility: hidden;
+    }
+
+    .flip-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+    }
+
+    .flip-front, .flip-back {
+      transform-origin: 0 0;
+      transition: all .3s ease;
+    }
 
     &:hover {
-      transform: rotateX(20deg);
+      .flip-front, .flip-back {
+        transform: rotateX(20deg);
+      }
     }
 
     &.turn {
-      transition: all 2s ease;
-      transform: rotateX(270deg);
-      top: -5px;
+      .flip-front, .flip-back {
+        transition: all 2s ease;
+        transform: rotateX(270deg);
+        top: -5px;
+      }
     }
 
     .list__number {
@@ -149,6 +143,21 @@ body {
     .list__month {
       font-size: 35px;
     }
+  }
+}
+
+.title-text {
+  position: relative;
+  z-index: 2;
+  font-size: 25px;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+  margin-top: 5vh;
+
+  span {
+    font-size: 1.5em;
+    margin: 0 .25em;
   }
 }
 
@@ -163,11 +172,6 @@ body {
     top: 0px;
     bottom: 0px;
     z-index: 0;
-    opacity: 0;
-
-    &.active {
-      opacity: 1;
-    }
 }
 
 .video-bg {
@@ -179,4 +183,39 @@ body {
     min-height: 100%; 
     width: auto; 
     height: auto;
+}
+
+.footer {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  heigth: 10vh;
+  line-height: 10vh;
+  text-align: center;
+
+  a {
+    color: #fff;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0 15px;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    transition: all .2s ease;
+    opacity: .6;
+
+    &:hover {
+      border-color: transparent;
+      opacity: 1;
+    }
+  }
+}
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }

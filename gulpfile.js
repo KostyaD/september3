@@ -62,7 +62,7 @@ gulp.task('jade', function() {
 gulp.task('sass', function () {
 	gulp.src(project.paths.app + '/styles/main.scss')
 		.pipe(sass.sync().on('error', sass.logError))
-		.pipe(prefix("last 3 version", "> 1%", "ie 8", "ie 7"))
+		.pipe(prefix("last 5 version", "> 1%", "ie 8", "ie 7"))
 		.pipe(gulp.dest(project.paths.build + '/styles'))
 		.pipe(connect.reload());
 });
